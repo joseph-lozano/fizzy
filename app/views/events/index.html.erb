@@ -8,8 +8,8 @@
   </nav>
 <% end %>
 
-<header>
-  <h1 class="txt-large overflow-ellipsis margin-block-start-none margin-block-end-half font-black">
+<header class="events-header position-relative">
+  <h1 class="txt-large overflow-ellipsis margin-block-start-none font-black">
     <div class="overflow-ellipsis">
       <% if @filter.collections.any? %>
         <%= filter_selected_collections_label(@filter) %>
@@ -28,7 +28,7 @@
     <% end %>
   </h1>
   <% if collection = @filter.single_collection || Current.user.collections.first %>
-    <%= button_to collection_cards_path(collection), method: :post, class: "btn btn--link txt-x-small margin-block-end-double", form_class: "center" do %>
+    <%= button_to collection_cards_path(collection), method: :post, class: "btn btn--link txt-x-small", form_class: "events-header__add-card" do %>
       <%= icon_tag "add" %>
       <span>Add a card</span>
     <% end %>
