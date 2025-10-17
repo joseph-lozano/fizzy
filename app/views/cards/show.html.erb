@@ -1,5 +1,5 @@
 <% @page_title = @card.title %>
-<% @header_class = "header--card" %>
+<% @header_class = "header--card header--main-width" %>
 <%= turbo_stream_from @card %>
 
 <% content_for :head do %>
@@ -12,14 +12,16 @@
 <% content_for :header do %>
   <%= render "filters/menu" %>
 
-  <%= link_to collection_url(@card.collection), class: "header__title btn borderless txt-large",
-        style: "--btn-padding: 0.25ch 1ch 0.25ch 0.75ch; view-transistion-name: card-collection-title;",
-        data: { controller: "hotkey", action: "keydown.esc@document->hotkey#click click->turbo-navigation#backIfSamePath" } do %>
-    <span class="overflow-ellipsis">
-      &larr;
-      <strong class="font-black"><%= @card.collection.name %></strong>
-    </span>
-  <% end %>
+  <h1 class="header__title divider divider--fade full-width">
+    <%= link_to collection_url(@card.collection), class: "btn borderless txt-large",
+          style: "--btn-padding: 0.25ch 1ch 0.25ch 0.75ch; view-transistion-name: card-collection-title;",
+          data: { controller: "hotkey", action: "keydown.esc@document->hotkey#click click->turbo-navigation#backIfSamePath" } do %>
+      <span class="overflow-ellipsis">
+        &larr;
+        <strong class="font-black"><%= @card.collection.name %></strong>
+      </span>
+    <% end %>
+  </h1>
 <% end %>
 
 <div data-controller="beacon lightbox" data-beacon-url-value="<%= card_reading_url(@card) %>">

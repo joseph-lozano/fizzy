@@ -24,16 +24,16 @@
       row-gap: 0;
     }
 
-    &:has(~ #main .card-columns) {
-      inline-size: 100dvw;
-      margin-inline: auto;
-      max-inline-size: var(--main-width);
-    }
-
     nav {
       grid-area: menu;
       margin-inline: auto;
     }
+  }
+
+  .header--main-width {
+    inline-size: 100dvw;
+    margin-inline: auto;
+    max-inline-size: var(--main-width);
   }
 
   .header__actions {
