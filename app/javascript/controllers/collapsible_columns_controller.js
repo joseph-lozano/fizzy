@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { nextFrame, debounce } from "helpers/timing_helpers";
 
 // TODO: Default column is 1. But when you expand and collapse and such, we should save that value to localStorage
+// TODO: When collapsing, move focus to nearest expanded column
 
 export default class extends Controller {
   static classes = [ "collapsed", "noTransitions", "titleNotVisible" ]
@@ -100,6 +101,7 @@ export default class extends Controller {
     this.#buttonFor(column).setAttribute("aria-expanded", "true")
     column.classList.remove(this.collapsedClass)
     localStorage.setItem(key, true)
+    this.#focus(column)
   }
 
   #buttonFor(column) {
@@ -178,10 +180,10 @@ export default class extends Controller {
       this.#toggleColumn(column)
     }
 
-    this.#focusColumn(column)
+    this.#focus(column)
   }
 
-  #focusColumn(column) {
+  #focus(column) {
     const focusElement = column.querySelector('[data-collapsible-columns-target="focusElement"]')
     focusElement.focus()
 
