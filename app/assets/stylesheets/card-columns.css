@@ -205,10 +205,6 @@
       }
     }
 
-    .cards--grid & {
-      display: contents;
-    }
-
     [aria-selected] & .card[aria-selected] {
       outline: var(--focus-ring-size) solid var(--color-selected-dark);
       outline-offset: var(--focus-ring-offset);
@@ -239,6 +235,7 @@
     justify-content: center;
     margin-inline: auto;
     max-inline-size: var(--main-width);
+    padding: 1ch;
 
     @media (min-width: 640px) {
       --card-grid-columns: 2;
@@ -246,6 +243,10 @@
 
     @media (min-width: 960px) {
       --card-grid-columns: 3;
+    }
+
+    .cards__list {
+      display: contents;
     }
 
     .card {
